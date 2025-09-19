@@ -42,6 +42,7 @@ Pipeline:
     ├── 📄 products.csv
     ├── 📄 orders.csv
     └── 📄 order_items.csv
+```
 
 ## 🗺️ Data Model (Star Schema)  
 
