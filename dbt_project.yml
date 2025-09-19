@@ -30,10 +30,18 @@ clean-targets:         # directories to be removed by `dbt clean`
 # directory as views. These settings can be overridden in the individual model
 # files using the `{{ config(...) }}` macro.
 models:
-  dbt_fabric:
+  dbt_fabric_project:
     staging:
-      +tags: [staging] 
-      +materialized: views
+      +schema: staging
+      +tags: [staging]
+      +materialized: table
     marts:
-      +tags: [marts] 
-      +materialized: views
+      +schema: marts
+      +tags: [marts]
+      +materialized: table
+
+seeds:
+  +enabled: "{{ target.name != 'prod' }}"
+  +schema: raw
+  +quote_columns: false
+  +tags: ['seed','raw']
